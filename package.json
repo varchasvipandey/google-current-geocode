@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/varchasvipandey/google-current-geocode.git"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Quick utility package to handle location permission and use current location to get complete location info using google places geocoding api.",
   "main": "dist/index.js",
   "scripts": {
@@ -18,13 +18,13 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
-    "@types/google.maps": "^3.58.1",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "prettier": "^3.3.3",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
+    "@types/google.maps": "^3.58.1",
     "lru-cache": "^11.0.2"
   }
 }

@@ -1,5 +1,9 @@
 import { LRUCache } from "lru-cache";
-import { CommonLocationOptions } from "./types";
+import {
+  CommonLocationOptions,
+  GoogleLocationInfoError,
+  GoogleLocationInfoRes,
+} from "./types";
 
 const options = {
   max: 10,
@@ -33,7 +37,7 @@ const getLocationAsync = (): Promise<GeolocationPosition> => {
 const getLocationInfoAsync = async (
   location: GeolocationPosition,
   options?: CommonLocationOptions
-) => {
+): Promise<GoogleLocationInfoRes | GoogleLocationInfoError> => {
   try {
     if (!location) return { error: "Location not found" };
 
@@ -42,7 +46,7 @@ const getLocationInfoAsync = async (
     if (options?.cache) {
       const cachedResult = locationCache.get(cacheKey);
       if (cachedResult) {
-        return cachedResult;
+        return cachedResult as GoogleLocationInfoRes;
       }
     }
 

@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/varchasvipandey/google-current-geocode.git"
   },
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Quick utility package to handle location permission and use current location to get complete location info using google places geocoding api.",
   "keywords": [
     "Google Geocoding",

@@ -36,25 +36,27 @@ const getLocationAsync = () => {
 const getLocationInfoAsync = (location, options) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!location)
-            return { error: "Location not found" };
+            return { error: "Location not found", status: false };
         const cacheKey = `${location.coords.latitude},${location.coords.longitude}`;
         if (options === null || options === void 0 ? void 0 : options.cache) {
             const cachedResult = locationCache.get(cacheKey);
             if (cachedResult) {
-                return cachedResult;
+                return {
+                    status: true,
+                    data: cachedResult,
+                };
             }
         }
         const geocoder = new google.maps.Geocoder();
         if (!geocoder)
-            return { error: "Geocoder not defined" };
+            return { error: "Geocoder not defined", status: false };
         const latlng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
         const data = yield geocoder.geocode({
             location: latlng,
         });
-        const result = { data };
         if (options === null || options === void 0 ? void 0 : options.cache)
-            locationCache.set(cacheKey, result);
-        return result;
+            locationCache.set(cacheKey, data);
+        return { data, status: true };
     }
     catch (e) {
         console.error(e);

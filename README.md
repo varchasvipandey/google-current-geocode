@@ -2,7 +2,7 @@
 
 A quick utility package to handle location permissions and retrieve complete location information using the Google Places Geocoding API.
 
-<span style="color: #b5213e;">This package is currently in the Beta Testing phase. We are testing it with the most commonly used libraries and frameworks while aiming to create frequently used location features. Feel free to contribute!</span>
+This package is currently in the Beta Testing phase. We are testing it with the most commonly used libraries and frameworks while aiming to create frequently used location features. Feel free to contribute!
 
 ## Easy to Set Up
 
@@ -12,15 +12,15 @@ A quick utility package to handle location permissions and retrieve complete loc
    npm install google-current-geocode
 ```
 
-2. Get your Google API key from [Google Cloud Console](https://console.cloud.google.com)
+2. **Get your Google API** key from [Google Cloud Console](https://console.cloud.google.com)
 
-3. Add the Google API script using the best approach for your project, or simply use the setupGooglePlacesApiScript function provided by the package:
+3. **Add the Google API script** using the best approach for your project, or simply use the setupGooglePlacesApiScript function provided by the package:
 
 ```javascript
 import { setupGooglePlacesApiScript } from "google-current-geocode";
 ```
 
-4. Invoke the setup function in the most appropriate place based on your project.
+4. **Invoke the setup function** in the most appropriate place based on your project.
 
 ```javascript
 // common usage
@@ -34,7 +34,7 @@ useEffect(() => {
 }, [])
 ```
 
-5. Call the location details fetcher function anywhere in your application. This simple function requests the user’s current location permission and calls the Google Geocoding API to fetch the location details.
+5. **Call the location details fetcher function** anywhere in your application. This simple function requests the user’s current location permission and calls the Google Geocoding API to fetch the location details.
 
 ```jsx
 import { getCurrentLocationDetails } from "google-current-geocode";
@@ -46,7 +46,7 @@ document.querySelector("#location").addEventListener("click", () => getCurrentLo
 <button onClick={() => getCurrentLocationDetails()}>Get Location</button>
 ```
 
-6. Ensure type safety with @types/google.maps:
+6. **Ensure type safety** with @types/google.maps:
 The package utilizes the @types/google.maps package. If it does not work as expected, you can manually install the type definitions:
 
 ```bash

@@ -1,9 +1,5 @@
 import { LRUCache } from "lru-cache";
-import {
-  CommonLocationOptions,
-  GoogleLocationInfoError,
-  GoogleLocationInfoRes,
-} from "./types";
+import { CommonLocationOptions, GoogleLocationInfoRes } from "./types";
 
 const options = {
   max: 10,
@@ -37,21 +33,24 @@ const getLocationAsync = (): Promise<GeolocationPosition> => {
 const getLocationInfoAsync = async (
   location: GeolocationPosition,
   options?: CommonLocationOptions
-): Promise<GoogleLocationInfoRes | GoogleLocationInfoError> => {
+): Promise<GoogleLocationInfoRes> => {
   try {
-    if (!location) return { error: "Location not found" };
+    if (!location) return { error: "Location not found", status: false };
 
     const cacheKey = `${location.coords.latitude},${location.coords.longitude}`;
 
     if (options?.cache) {
       const cachedResult = locationCache.get(cacheKey);
       if (cachedResult) {
-        return cachedResult as GoogleLocationInfoRes;
+        return {
+          status: true,
+          data: cachedResult as google.maps.GeocoderResponse,
+        };
       }
     }
 
     const geocoder = new google.maps.Geocoder();
-    if (!geocoder) return { error: "Geocoder not defined" };
+    if (!geocoder) return { error: "Geocoder not defined", status: false };
 
     const latlng = new google.maps.LatLng(
       location.coords.latitude,
@@ -61,11 +60,9 @@ const getLocationInfoAsync = async (
       location: latlng,
     });
 
-    const result = { data };
+    if (options?.cache) locationCache.set(cacheKey, data);
 
-    if (options?.cache) locationCache.set(cacheKey, result);
-
-    return result;
+    return { data, status: true };
   } catch (e: any) {
     console.error(e);
     throw new Error(e);

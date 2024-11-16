@@ -1,10 +1,17 @@
 {
   "name": "google-current-geocode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/varchasvipandey/google-current-geocode.git"
+  },
   "version": "0.0.1",
   "description": "Quick utility package to handle location permission and use current location to get complete location info using google places geocoding api.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs"
   },

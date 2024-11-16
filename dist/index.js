@@ -1,1 +1,17 @@
-"use strict";var e=require("lru-cache");function t(e,t,r,n){return new(r||(r=Promise))((function(o,c){function a(e){try{u(n.next(e))}catch(e){c(e)}}function i(e){try{u(n.throw(e))}catch(e){c(e)}}function u(e){var t;e.done?o(e.value):(t=e.value,t instanceof r?t:new r((function(e){e(t)}))).then(a,i)}u((n=n.apply(e,t||[])).next())}))}function r(e,t){var r,n,o,c={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]},a=Object.create(("function"==typeof Iterator?Iterator:Object).prototype);return a.next=i(0),a.throw=i(1),a.return=i(2),"function"==typeof Symbol&&(a[Symbol.iterator]=function(){return this}),a;function i(i){return function(u){return function(i){if(r)throw new TypeError("Generator is already executing.");for(;a&&(a=0,i[0]&&(c=0)),c;)try{if(r=1,n&&(o=2&i[0]?n.return:i[0]?n.throw||((o=n.return)&&o.call(n),0):n.next)&&!(o=o.call(n,i[1])).done)return o;switch(n=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return c.label++,{value:i[1],done:!1};case 5:c.label++,n=i[1],i=[0];continue;case 7:i=c.ops.pop(),c.trys.pop();continue;default:if(!(o=c.trys,(o=o.length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){c=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){c.label=i[1];break}if(6===i[0]&&c.label<o[1]){c.label=o[1],o=i;break}if(o&&c.label<o[2]){c.label=o[2],c.ops.push(i);break}o[2]&&c.ops.pop(),c.trys.pop();continue}i=t.call(e,c)}catch(e){i=[6,e],n=0}finally{r=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,u])}}}"function"==typeof SuppressedError&&SuppressedError;var n=new e.LRUCache({max:10,ttl:3e5}),o=function(e,o){return t(void 0,void 0,void 0,(function(){var t,c,a,i,u,s,l;return r(this,(function(r){switch(r.label){case 0:return r.trys.push([0,2,,3]),e?(t="".concat(e.coords.latitude,",").concat(e.coords.longitude),(null==o?void 0:o.cache)&&(c=n.get(t))?[2,c]:(a=new google.maps.Geocoder)?(i=new google.maps.LatLng(e.coords.latitude,e.coords.longitude),[4,a.geocode({location:i})]):[2,{error:"Geocoder not defined"}]):[2,{error:"Location not found"}];case 1:return u=r.sent(),s={data:u},(null==o?void 0:o.cache)&&n.set(t,s),[2,s];case 2:throw l=r.sent(),console.error(l),new Error(l);case 3:return[2]}}))}))};exports.getCurrentLocationDetails=function(e){return t(void 0,void 0,void 0,(function(){var t,n;return r(this,(function(r){switch(r.label){case 0:return r.trys.push([0,3,,4]),[4,new Promise((function(e,t){navigator.geolocation.getCurrentPosition((function(t){return e(t)}),(function(e){return t(e)}))}))];case 1:return t=r.sent(),[4,o(t,e)];case 2:return[2,r.sent()];case 3:throw n=r.sent(),console.error(n),new Error(n);case 4:return[2]}}))}))},exports.setupGooglePlacesApiScript=function(e){var t="google-places-api-script";if(!document.getElementById(t)){var r=document.createElement("script");r.id=t,r.src="https://maps.googleapis.com/maps/api/js?key=".concat(e,"&libraries=places&v=weekly"),r.async=!0,document.head.appendChild(r)}};
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./fns"), exports);
